@@ -94,4 +94,5 @@ p2 <- ggplot(d2) +
   )
 p <- p1 / p2
 ggsave("usafacts-covid.pdf", p, width = 10, height = 8)
+ggsave("usafacts-covid.png", p, width = 10, height = 8)
 
