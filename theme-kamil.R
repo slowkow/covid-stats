@@ -4,8 +4,8 @@
 theme_kamil <- theme_classic() +
 theme(
   panel.spacing    = unit(2, "lines"),
-  panel.border     = element_rect(size = 0.5, fill = NA),
-  axis.ticks       = element_line(size = 0.4),
+  panel.border     = element_rect(linewidth = 0.5, fill = NA),
+  axis.ticks       = element_line(linewidth = 0.4),
   axis.line        = element_blank(),
   plot.title       = element_text(size = 16),
   plot.title.position = "plot",

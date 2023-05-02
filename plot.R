@@ -1,15 +1,20 @@
-library(ggplot2)
-library(readr)
-library(janitor)
-library(dplyr)
-library(stringr)
-library(tibble)
-library(zoo)
-library(scales)
-library(patchwork)
-library(tidyr)
-library(ggtext)
-library(glue)
+#!/usr/bin/env Rscript
+
+pacman::p_load(
+  ggplot2,
+  readr,
+  janitor,
+  dplyr,
+  stringr,
+  tibble,
+  zoo,
+  scales,
+  patchwork,
+  tidyr,
+  ggtext,
+  glue,
+  pals
+)
 #
 source("theme-kamil.R")
 theme_set(theme_kamil)
@@ -56,9 +61,10 @@ d2$date2 <- as.Date(sprintf("2020-%s", d2$day), format = "%Y-%m-%d")
 
 p1 <- ggplot(d) +
   aes(x = date2, y = mean_newcases, group = year, color = year) +
-  geom_line(size = 2) +
+  geom_line(linewidth = 2) +
   scale_x_date(date_labels="%b",date_breaks = "1 month") +
   scale_y_continuous(trans = "log10", labels = label_number_si()) +
+  scale_color_manual(values = pals::okabe()) +
   annotation_logticks(sides = "l") +
   guides(color = guide_legend(title = NULL)) +
   theme(
@@ -75,9 +81,10 @@ p1 <- ggplot(d) +
   )
 p2 <- ggplot(d2) +
   aes(x = date2, y = mean_newcases, group = year, color = year) +
-  geom_line(size = 2) +
+  geom_line(linewidth = 2) +
   scale_x_date(date_labels="%b",date_breaks = "1 month") +
   scale_y_continuous(trans = "log10", labels = label_number(scale_cut = cut_short_scale())) +
+  scale_color_manual(values = pals::okabe()) +
   annotation_logticks(sides = "l") +
   guides(color = guide_legend(title = NULL)) +
   theme(
