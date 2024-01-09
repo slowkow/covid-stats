@@ -63,7 +63,7 @@ p1 <- ggplot(d) +
   aes(x = date2, y = mean_newcases, group = year, color = year) +
   geom_line(linewidth = 2) +
   scale_x_date(date_labels="%b",date_breaks = "1 month") +
-  scale_y_continuous(trans = "log10", labels = label_number_si()) +
+  scale_y_continuous(trans = "log10", labels = label_number(scale_cut = cut_short_scale())) +
   scale_color_manual(values = pals::okabe()) +
   annotation_logticks(sides = "l") +
   guides(color = guide_legend(title = NULL)) +
